@@ -8,6 +8,7 @@ import static spark.Spark.*;
  */
 public class App {
     public static void main(String[] args) {
+
         options("/*", (request, response) -> {
 
             String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
@@ -22,6 +23,8 @@ public class App {
 
             return "OK";
         });
+
+        before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
 
         before((request, response) -> response.header("Access-Control-Allow-Origin", "*"));
         // before((request, response) -> {
