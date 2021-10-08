@@ -7,7 +7,7 @@ var tabla = [
 window.onload = mostrarTabla;
 
 function cargarDatos(){
-    document.getElementById("mostrar-tabla").addEventListener("click",mostrarTabla,false);
+    //document.getElementById("mostrar-tabla").addEventListener("click",mostrarTabla,false);
     document.getElementById("btnGuardar").addEventListener("click",nuevoUsuario,false);
 }
 
