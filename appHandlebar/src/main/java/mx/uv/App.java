@@ -12,7 +12,10 @@ public class App {
 
         System.out.println("Hello world");
         staticFiles.location("/");
+        port(getHerokuAssignedPort());
 
+        port(getHerokuAssignedPort());
+        get("/hello", (req, res) -> "Hello Heroku World");
 
         get("/handleB",(req,res)->{
             Map<String,String> model = new HashMap<>();
@@ -24,7 +27,15 @@ public class App {
             return new HandlebarsTemplateEngine().render(new ModelAndView(model, "/EjemploHandle.hbs"));
         });
 
-    
 
+
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //return default port if heroku-port isn't set (i.e. on localhost)
     }
 }
