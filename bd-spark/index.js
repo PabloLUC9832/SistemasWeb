@@ -39,7 +39,23 @@ btnEliminar.addEventListener("click",() => {
         email : document.getElementById("email").value
     })
     .then(function(res){
-        alert("Usuario:" + res.data.status + " id:" + res.data.id+" eliminado");
+        //alert("Usuario:" + res.data.status + " id:" + res.data.id);
+        alert(""+ res.data.status);
+    })
+    .catch(function (error) {
+        console.log(error)
+    })
+})
+
+var btnModificar = document.getElementById("btnModificar");
+btnModificar.addEventListener("click",() => {
+    axios.post("http://localhost:4567/modificarUsuario",{
+        email : document.getElementById("email").value ,
+        password: document.getElementById("password").value        
+    })
+    .then(function(res){
+        //alert("Usuario:" + res.data.status + " id:" + res.data.id);
+        alert(""+ res.data.status);
     })
     .catch(function (error) {
         console.log(error)

@@ -77,5 +77,21 @@ public class App {
             return respuesta;
         });
 
+        post("/modificarUsuario", (req, res) -> {
+            // Insertamos un nuevo usuario
+            String json = req.body();
+            Usuario u = gson.fromJson(json, Usuario.class);
+            //String id = UUID.randomUUID().toString();
+            //u.setId(id);
+            //usuarios.put(id, u);
+
+            DAO dao = new DAO();
+            JsonObject respuesta = new JsonObject();
+            respuesta.addProperty("status", dao.modificarUsuario(u));
+            //respuesta.addProperty("id", id);
+            return respuesta;
+        });
+
+
     }
 }
